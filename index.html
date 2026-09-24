@@ -1,0 +1,1087 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Cozy Fidget Desk</title>
+
+<style>
+
+/* =========================
+   BASIC PAGE
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    /* Wooden desk */
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #b98555 0px,
+            #c89565 80px,
+            #b67c4e 160px
+        );
+
+    color: #40352e;
+}
+
+/* =========================
+   DESK
+========================= */
+
+.desk {
+    width: 94%;
+    max-width: 1100px;
+
+    margin: 30px auto;
+    padding: 30px;
+
+    min-height: 750px;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.18)
+        ),
+        #d4aa7b;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 40px rgba(50,30,15,.35),
+        inset 0 0 30px rgba(80,45,20,.15);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.title {
+    text-align: center;
+
+    font-family: Georgia, serif;
+
+    font-size: 34px;
+
+    color: #4d3829;
+
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    text-align: center;
+
+    color: #70543e;
+
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   NOTEBOOK
+========================= */
+
+.notebook {
+    background:
+        repeating-linear-gradient(
+            #fffdf5 0px,
+            #fffdf5 27px,
+            #dce9f0 28px
+        );
+
+    border-radius: 8px;
+
+    padding: 25px;
+
+    box-shadow:
+        5px 8px 15px rgba(60,40,25,.25);
+
+    border-left: 10px solid #d58c9c;
+
+    transform: rotate(-1deg);
+
+    margin-bottom: 25px;
+}
+
+.notebook h2 {
+    margin-top: 0;
+
+    font-family: Georgia, serif;
+
+    color: #664c40;
+}
+
+.notebook p {
+    line-height: 28px;
+}
+
+/* =========================
+   WASHI TAPE
+========================= */
+
+.tape {
+    position: absolute;
+
+    width: 120px;
+    height: 28px;
+
+    background: rgba(238,179,194,.75);
+
+    transform: rotate(-8deg);
+
+    top: 115px;
+    right: 100px;
+
+    box-shadow: 0 2px 4px rgba(50,30,20,.15);
+}
+
+/* =========================
+   FIDGET GRID
+========================= */
+
+.fidget-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.3fr
+        1fr
+        1fr;
+
+    gap: 20px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.95),
+            rgba(245,239,228,.95)
+        );
+
+    border-radius: 16px;
+
+    padding: 18px;
+
+    box-shadow:
+        0 7px 14px rgba(70,45,25,.22),
+        inset 0 1px 2px white;
+
+    border: 1px solid rgba(100,70,45,.15);
+}
+
+.card h3 {
+    margin-top: 0;
+
+    font-family: Georgia, serif;
+
+    color: #62483a;
+}
+
+/* =========================
+   REALISTIC BUBBLES
+========================= */
+
+.bubbles {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 10px;
+
+    padding: 10px;
+}
+
+.bubble {
+    width: 100%;
+    aspect-ratio: 1;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    background:
+        radial-gradient(
+            circle at 28% 23%,
+            rgba(255,255,255,.95) 0 5%,
+            rgba(255,255,255,.5) 8%,
+            rgba(181,228,247,.8) 25%,
+            #7fc0df 55%,
+            #3c83a7 100%
+        );
+
+    box-shadow:
+        inset 5px 6px 8px rgba(255,255,255,.8),
+        inset -7px -8px 12px rgba(28,80,105,.45),
+        0 4px 6px rgba(40,50,55,.3);
+
+    transition: .12s;
+}
+
+.bubble:hover {
+    transform: scale(1.04);
+}
+
+.bubble:active {
+    transform: scale(.8);
+}
+
+.bubble.popped {
+    transform: scale(.72);
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #eeeeee,
+            #bdbdbd 55%,
+            #858585
+        );
+
+    box-shadow:
+        inset 4px 5px 8px rgba(255,255,255,.7),
+        inset -5px -6px 8px rgba(50,50,50,.35);
+}
+
+.counter {
+    text-align: center;
+
+    font-weight: bold;
+
+    color: #765b49;
+}
+
+/* =========================
+   FIDGET SPINNER
+========================= */
+
+.spinner {
+    width: 140px;
+    height: 140px;
+
+    margin: 15px auto;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #e88ba8,
+            #c85d80
+        );
+
+    border: 8px solid #b64d70;
+
+    position: relative;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 5px 5px 10px rgba(255,255,255,.55),
+        inset -7px -7px 10px rgba(90,20,40,.35),
+        0 7px 10px rgba(70,35,30,.3);
+
+    transition:
+        transform .8s cubic-bezier(.15,.8,.25,1);
+}
+
+.spinner:before,
+.spinner:after {
+    content: "";
+
+    position: absolute;
+
+    background: #ffd6e2;
+
+    border-radius: 50px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+.spinner:before {
+    width: 40px;
+    height: 105px;
+}
+
+.spinner:after {
+    width: 105px;
+    height: 40px;
+}
+
+.spinner .center {
+    position: absolute;
+
+    width: 38px;
+    height: 38px;
+
+    background: #c84f77;
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 2;
+
+    box-shadow:
+        inset 3px 3px 5px rgba(255,255,255,.5);
+}
+
+/* =========================
+   SWITCH
+========================= */
+
+.switch {
+    width: 100%;
+    height: 62px;
+
+    border: none;
+
+    border-radius: 40px;
+
+    background: #bdbab4;
+
+    padding: 6px;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 3px 4px 8px #888;
+}
+
+.switch span {
+    display: block;
+
+    width: 50px;
+    height: 50px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d7d4d0
+        );
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 4px 7px rgba(60,50,40,.35);
+
+    transition: .3s;
+}
+
+.switch.on {
+    background: #79b991;
+}
+
+.switch.on span {
+    transform:
+        translateX(
+            calc(100% + 5px)
+        );
+}
+
+/* =========================
+   SQUISHY
+========================= */
+
+.squishy {
+    width: 130px;
+    height: 95px;
+
+    border: none;
+
+    border-radius:
+        45% 50% 42% 48%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #fff1f5,
+            #ffb4ca 40%,
+            #e7779d 100%
+        );
+
+    box-shadow:
+        inset 8px 8px 12px rgba(255,255,255,.8),
+        inset -8px -9px 12px rgba(130,40,70,.25),
+        0 7px 10px rgba(80,45,45,.3);
+
+    cursor: pointer;
+
+    font-size: 35px;
+
+    transition: .12s;
+}
+
+.squishy:active {
+    transform: scale(.82,.65);
+}
+
+/* =========================
+   SLIDER
+========================= */
+
+.slider {
+    width: 100%;
+
+    accent-color: #c46d8c;
+
+    cursor: pointer;
+}
+
+/* =========================
+   STICKY NOTE
+========================= */
+
+.sticky {
+    background: #ffe98d;
+
+    padding: 20px;
+
+    min-height: 170px;
+
+    font-family:
+        "Comic Sans MS",
+        cursive;
+
+    transform: rotate(2deg);
+
+    box-shadow:
+        5px 7px 12px rgba(60,40,20,.25);
+}
+
+.sticky h3 {
+    margin-top: 0;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.reset {
+    display: block;
+
+    margin: 25px auto 0;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 12px;
+
+    background: #765542;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 0 #513a2c;
+}
+
+.reset:active {
+    transform: translateY(3px);
+
+    box-shadow:
+        0 1px 0 #513a2c;
+}
+
+/* =========================
+   DECORATIONS
+========================= */
+
+.pencil {
+    position: absolute;
+
+    width: 170px;
+    height: 18px;
+
+    background: #e2b34f;
+
+    top: 80px;
+    left: 35px;
+
+    transform: rotate(25deg);
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 3px 5px rgba(60,40,20,.25);
+}
+
+.pencil:after {
+    content: "";
+
+    position: absolute;
+
+    right: -15px;
+
+    top: 0;
+
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 15px solid #d7a56e;
+}
+
+.sticker {
+    position: absolute;
+
+    font-size: 30px;
+
+    opacity: .9;
+}
+
+.star {
+    top: 130px;
+    left: 90px;
+}
+
+.heart {
+    bottom: 40px;
+    right: 60px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .fidget-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .desk {
+        width: 96%;
+        padding: 18px;
+    }
+
+    .fidget-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 27px;
+    }
+
+    .pencil,
+    .tape {
+        display: none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="desk">
+
+    <!-- Decorations -->
+
+    <div class="pencil"></div>
+
+    <div class="tape"></div>
+
+    <div class="sticker star">⭐</div>
+
+    <div class="sticker heart">💗</div>
+
+
+    <!-- HEADER -->
+
+    <h1 class="title">
+        🧸 My Cozy Fidget Desk
+    </h1>
+
+    <p class="subtitle">
+        a tiny desk for maximum ✨satisfaction✨
+    </p>
+
+
+    <!-- NOTEBOOK -->
+
+    <div class="notebook">
+
+        <h2>
+            📖 Fidget Journal
+        </h2>
+
+        <p>
+            Welcome to my little desk!
+        </p>
+
+        <p>
+            Today's mission:
+            pop everything. 🫧
+        </p>
+
+    </div>
+
+
+    <!-- FIDGET ITEMS -->
+
+    <div class="fidget-grid">
+
+
+        <!-- BUBBLE WRAP -->
+
+        <div class="card">
+
+            <h3>
+                🫧 Real Bubble Wrap
+            </h3>
+
+            <div
+                class="bubbles"
+                id="bubbles">
+            </div>
+
+            <div
+                class="counter"
+                id="counter">
+
+                0 / 20 popped
+
+            </div>
+
+        </div>
+
+
+        <!-- SPINNER -->
+
+        <div class="card">
+
+            <h3>
+                🌀 Fidget Spinner
+            </h3>
+
+            <div
+                class="spinner"
+                id="spinner">
+
+                <div class="center"></div>
+
+            </div>
+
+            <p style="text-align:center;">
+                Click to spin!
+            </p>
+
+        </div>
+
+
+        <!-- SWITCH -->
+
+        <div class="card">
+
+            <h3>
+                🔘 Clicky Switch
+            </h3>
+
+            <button
+                class="switch"
+                id="switch">
+
+                <span></span>
+
+            </button>
+
+            <p
+                id="switchText"
+                style="text-align:center;">
+
+                OFF
+
+            </p>
+
+        </div>
+
+
+        <!-- SQUISHY -->
+
+        <div
+            class="card"
+            style="text-align:center;">
+
+            <h3>
+                🩷 Squishy
+            </h3>
+
+            <button
+                class="squishy"
+                id="squishy">
+
+                ♡
+
+            </button>
+
+            <p id="squishText">
+                squish me!
+            </p>
+
+        </div>
+
+
+        <!-- SLIDER -->
+
+        <div class="card">
+
+            <h3>
+                🎚️ Fidget Slider
+            </h3>
+
+            <input
+                class="slider"
+                id="slider"
+                type="range"
+                min="0"
+                max="100"
+                value="50">
+
+            <p style="text-align:center;">
+
+                Level:
+                <b id="sliderValue">
+                    50
+                </b>
+
+            </p>
+
+        </div>
+
+
+        <!-- STICKY NOTE -->
+
+        <div class="sticky">
+
+            <h3>
+                📌 Things To Do
+            </h3>
+
+            <p>
+                ☐ Pop bubbles
+            </p>
+
+            <p>
+                ☐ Spin spinner
+            </p>
+
+            <p>
+                ☐ Click switch
+            </p>
+
+            <p>
+                ☐ Squish the squishy
+            </p>
+
+            <p>
+                ☑ Have fun!
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESET -->
+
+    <button
+        class="reset"
+        id="reset">
+
+        🔄 Reset My Desk
+
+    </button>
+
+</div>
+
+
+<script>
+
+/* =========================
+   BUBBLE WRAP
+========================= */
+
+const bubbles =
+    document.getElementById("bubbles");
+
+const counter =
+    document.getElementById("counter");
+
+let popped = 0;
+
+
+function createBubbles() {
+
+    bubbles.innerHTML = "";
+
+    popped = 0;
+
+    counter.textContent =
+        "0 / 20 popped";
+
+
+    for (
+        let i = 0;
+        i < 20;
+        i++
+    ) {
+
+        const bubble =
+            document.createElement("button");
+
+        bubble.className =
+            "bubble";
+
+        bubble.type =
+            "button";
+
+
+        bubble.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    bubble.classList.contains(
+                        "popped"
+                    )
+                ) {
+                    return;
+                }
+
+
+                bubble.classList.add(
+                    "popped"
+                );
+
+
+                popped++;
+
+
+                counter.textContent =
+                    popped + " / 20 popped";
+
+            }
+        );
+
+
+        bubbles.appendChild(
+            bubble
+        );
+    }
+}
+
+
+/* =========================
+   SPINNER
+========================= */
+
+const spinner =
+    document.getElementById(
+        "spinner"
+    );
+
+let rotation = 0;
+
+
+spinner.addEventListener(
+    "click",
+    function () {
+
+        rotation +=
+            720 +
+            Math.random() * 360;
+
+
+        spinner.style.transform =
+            "rotate(" +
+            rotation +
+            "deg)";
+
+    }
+);
+
+
+/* =========================
+   SWITCH
+========================= */
+
+const switchButton =
+    document.getElementById(
+        "switch"
+    );
+
+const switchText =
+    document.getElementById(
+        "switchText"
+    );
+
+
+switchButton.addEventListener(
+    "click",
+    function () {
+
+        const on =
+            switchButton.classList.toggle(
+                "on"
+            );
+
+
+        if (on) {
+
+            switchText.textContent =
+                "ON ✨";
+
+        } else {
+
+            switchText.textContent =
+                "OFF";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   SQUISHY
+========================= */
+
+const squishy =
+    document.getElementById(
+        "squishy"
+    );
+
+const squishText =
+    document.getElementById(
+        "squishText"
+    );
+
+
+squishy.addEventListener(
+    "click",
+    function () {
+
+        squishText.textContent =
+            "hehehe squish! 🥹";
+
+
+        setTimeout(
+            function () {
+
+                squishText.textContent =                    "squish me!";
+
+            },
+            700
+        );
+
+    }
+);
+
+
+/* =========================
+   SLIDER
+========================= */
+
+const slider =
+    document.getElementById(
+        "slider"
+    );
+
+const sliderValue =
+    document.getElementById(
+        "sliderValue"
+    );
+
+
+slider.addEventListener(
+    "input",
+    function () {
+
+        sliderValue.textContent =
+            slider.value;
+
+    }
+);
+
+
+/* =========================
+   RESET
+========================= */
+
+const reset =
+    document.getElementById(
+        "reset"
+    );
+
+
+reset.addEventListener(
+    "click",
+    function () {
+
+        createBubbles();
+
+
+        rotation = 0;
+
+        spinner.style.transform =
+            "rotate(0deg)";
+
+
+        switchButton.classList.remove(
+            "on"
+        );
+
+        switchText.textContent =
+            "OFF";
+
+
+        squishText.textContent =
+            "squish me!";
+
+
+        slider.value = 50;
+
+        sliderValue.textContent =
+            "50";
+
+    }
+);
+
+
+/* Start */
+
+createBubbles();
+
+</script>
+
+</body>
+</html>
